@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Example Starter module.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_install().
+ */
+function example_starter_install(): void {
+  $config = \Drupal::configFactory()->getEditable('example_starter.settings');
+  if ($config->get('greeting_prefix') === NULL) {
+    $config->set('greeting_prefix', 'Hello')
+      ->set('show_username', TRUE)
+      ->save();
+  }
+  \Drupal::logger('example_starter')->notice('Example Starter installed with default configuration.');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function example_starter_uninstall(): void {
+  \Drupal::configFactory()->getEditable('example_starter.settings')->delete();
+  \Drupal::state()->delete('example_starter.request_count');
+  \Drupal::logger('example_starter')->notice('Example Starter configuration removed.');
+}
+
+/**
+ * Renames the legacy "prefix" config key to "greeting_prefix".
+ */
+function example_starter_update_9001(): string {
+  $config = \Drupal::configFactory()->getEditable('example_starter.settings');
+  $legacy = $config->get('prefix');
+  if ($legacy !== NULL && $config->get('greeting_prefix') === NULL) {
+    $config->set('greeting_prefix', $legacy)
+      ->clear('prefix')
+      ->save(TRUE);
+    return 'Renamed config key "prefix" to "greeting_prefix".';
+  }
+  return 'No legacy "prefix" key found; nothing to migrate.';
+}

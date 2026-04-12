@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the Example Starter greeting.
+ *
+ * Available variables:
+ * - greeting: The fully formatted greeting string.
+ * - user_name: The user name fragment (may be empty for anonymous).
+ *
+ * @ingroup themeable
+ */
+#}
+{{ attach_library('example_starter/global') }}
+<div class="example-starter-greeting">
+  <h2 class="example-starter-greeting__heading">{{ greeting }}</h2>
+  {% if user_name %}
+    <p class="example-starter-greeting__body">{{ 'Logged in as @name'|t({'@name': user_name}) }}</p>
+  {% endif %}
+</div>

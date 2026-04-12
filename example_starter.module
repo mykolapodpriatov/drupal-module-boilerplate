@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for the Example Starter module.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function example_starter_help(string $route_name, RouteMatchInterface $route_match): string {
+  switch ($route_name) {
+    case 'help.page.example_starter':
+      $output = '<h2>' . t('About') . '</h2>';
+      $output .= '<p>' . t('The Example Starter module is a production-ready scaffold for building custom Drupal modules. It demonstrates dependency injection, configuration management, plugins, and event subscribers.') . '</p>';
+      $output .= '<h2>' . t('Usage') . '</h2>';
+      $output .= '<p>' . t('Visit <em>/example-starter/hello</em> after enabling the module to verify it works. Configuration lives under <em>/admin/config/example-starter/settings</em>.') . '</p>';
+      return $output;
+
+    default:
+      return '';
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function example_starter_theme(array $existing, string $type, string $theme, string $path): array {
+  return [
+    'example_starter_greeting' => [
+      'variables' => [
+        'greeting' => NULL,
+        'user_name' => NULL,
+      ],
+      'template' => 'example-starter-greeting',
+    ],
+  ];
+}

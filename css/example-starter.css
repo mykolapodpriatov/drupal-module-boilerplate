@@ -1,0 +1,24 @@
+/**
+ * @file
+ * Styles for the Example Starter module.
+ */
+
+.example-starter-greeting {
+  padding: 1rem 1.25rem;
+  border: 1px solid #d3d4d9;
+  border-radius: 4px;
+  background-color: #f7f7f9;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+.example-starter-greeting__heading {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  color: #1a1a1a;
+}
+
+.example-starter-greeting__body {
+  margin: 0;
+  color: #4a4a4a;
+}

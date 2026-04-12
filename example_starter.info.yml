@@ -1,0 +1,9 @@
+name: 'Example Starter'
+type: module
+description: 'Production-ready starter template demonstrating modern Drupal 10/11 patterns: dependency injection, services, config schema, plugins, events, and full test coverage.'
+package: Custom
+core_version_requirement: ^10.3 || ^11
+configure: example_starter.settings_form
+dependencies:
+  - drupal:user
+  - drupal:system

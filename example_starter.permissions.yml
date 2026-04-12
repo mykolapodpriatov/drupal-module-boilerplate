@@ -1,0 +1,8 @@
+'view example starter page':
+  title: 'View Example Starter greeting page'
+  description: 'Allows access to the public greeting page provided by Example Starter.'
+
+'administer example starter':
+  title: 'Administer Example Starter'
+  description: 'Allows configuration of Example Starter settings.'
+  restrict access: true

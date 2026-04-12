@@ -1,0 +1,43 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Composer artifacts
+composer.lock
+
+# DDEV
+/.ddev/.global_commands/
+/.ddev/db_snapshots/
+/.ddev/import-db/
+/.ddev/import.yaml
+/.ddev/providers/
+/.ddev/commands/
+/.ddev/homeadditions/
+/.ddev/*-build/
+/.ddev/*.yaml.bak
+
+# IDE
+/.idea/
+/.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# PHPUnit
+/.phpunit.result.cache
+/phpunit.xml
+/build/
+/coverage/
+
+# PHPStan
+/.phpstan.cache/
+phpstan-baseline.neon
+
+# Drupal
+sites/default/files/
+sites/default/private/
+sites/default/settings.local.php
+sites/*/settings.local.php
+
+# Test artifacts
+/sites/simpletest/

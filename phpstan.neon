@@ -1,0 +1,20 @@
+parameters:
+  level: 8
+  paths:
+    - src
+    - tests
+    - example_starter.module
+    - example_starter.install
+  excludePaths:
+    - vendor
+  drupal:
+    drupal_root: web
+  ignoreErrors:
+    # The Drupal::service() pattern in hook_install() is unavoidable.
+    - '#Static call to method get\(\) on Drupal\\.+#'
+  reportUnmatchedIgnoredErrors: false
+
+includes:
+  - vendor/mglaman/phpstan-drupal/extension.neon
+  - vendor/mglaman/phpstan-drupal/rules.neon
+  - vendor/phpstan/phpstan-deprecation-rules/rules.neon

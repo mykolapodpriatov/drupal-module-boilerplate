@@ -1,0 +1,10 @@
+global:
+  version: 1.0.0
+  css:
+    component:
+      css/example-starter.css: {}
+  js:
+    js/example-starter.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
