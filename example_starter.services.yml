@@ -1,0 +1,16 @@
+services:
+  example_starter.greeter:
+    class: Drupal\example_starter\Service\Greeter
+    arguments:
+      - '@current_user'
+      - '@logger.factory'
+      - '@config.factory'
+
+  example_starter.request_subscriber:
+    class: Drupal\example_starter\EventSubscriber\RequestSubscriber
+    arguments:
+      - '@state'
+      - '@current_route_match'
+      - '@logger.factory'
+    tags:
+      - { name: event_subscriber }
