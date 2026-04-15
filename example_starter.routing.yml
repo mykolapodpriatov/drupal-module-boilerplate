@@ -1,0 +1,17 @@
+example_starter.hello:
+  path: '/example-starter/hello'
+  defaults:
+    _controller: '\Drupal\example_starter\Controller\HelloController::page'
+    _title: 'Example Starter'
+  requirements:
+    _permission: 'view example starter page'
+  options:
+    no_cache: FALSE
+
+example_starter.settings_form:
+  path: '/admin/config/example-starter/settings'
+  defaults:
+    _form: '\Drupal\example_starter\Form\SettingsForm'
+    _title: 'Example Starter settings'
+  requirements:
+    _permission: 'administer example starter'

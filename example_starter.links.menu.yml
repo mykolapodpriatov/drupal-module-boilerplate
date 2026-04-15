@@ -1,0 +1,6 @@
+example_starter.settings_form:
+  title: 'Example Starter'
+  description: 'Configure the Example Starter module.'
+  parent: system.admin_config_development
+  route_name: example_starter.settings_form
+  weight: 10
