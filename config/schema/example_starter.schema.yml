@@ -1,0 +1,21 @@
+example_starter.settings:
+  type: config_object
+  label: 'Example Starter settings'
+  mapping:
+    greeting_prefix:
+      type: string
+      label: 'Greeting prefix'
+      constraints:
+        NotBlank: ~
+        Length:
+          max: 64
+    show_username:
+      type: boolean
+      label: 'Show user name in greeting'
+    max_name_length:
+      type: integer
+      label: 'Maximum accepted name length'
+      constraints:
+        Range:
+          min: 1
+          max: 255

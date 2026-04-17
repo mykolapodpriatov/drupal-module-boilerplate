@@ -1,0 +1,3 @@
+greeting_prefix: 'Hello'
+show_username: true
+max_name_length: 64
