@@ -61,7 +61,7 @@ jobs:
           composer config minimum-stability dev
           composer config prefer-stable true
           composer config repositories.example_starter path ../example_starter
-          composer require --no-update "drupal/example_starter:*"
+          composer require --no-update "mykolapodpriatov/example_starter:*"
           composer require --dev --no-update \
             drupal/coder:^8.3 \
             mglaman/phpstan-drupal:^1.2 \
@@ -149,7 +149,7 @@ jobs:
           composer config minimum-stability dev
           composer config prefer-stable true
           composer config repositories.example_starter path ../example_starter
-          composer require --no-update "drupal/example_starter:*"
+          composer require --no-update "mykolapodpriatov/example_starter:*"
           composer require --dev --no-update phpunit/phpunit:"^9.6 || ^10"
           composer install --no-interaction --no-progress --prefer-dist
           mkdir -p web/sites/simpletest/browser_output
