@@ -49,7 +49,15 @@ final class SettingsFormTest extends KernelTestBase {
   public function testValidSubmitPersistsValues(): void {
     $form_state = (new FormState())->setValues([
       'greeting_prefix' => '  Howdy  ',
-      'show_username' => FALSE,
+      // To uncheck a checkbox in a programmatic submission, the value must be
+      // NULL, not FALSE or 0. Checkbox::valueCallback() treats boolean FALSE as
+      // "no input present" and falls back to the element's #default_value (here
+      // the config default TRUE), while integer 0 is "set" and resolves to the
+      // checked #return_value. Only NULL is interpreted as an unchecked
+      // checkbox (resolving to integer 0). This mirrors Drupal core's own
+      // \Drupal\Tests\system\Kernel\Form\ProgrammaticTest, which unchecks
+      // checkboxes with NULL. Identical behaviour on Drupal 10.3 and 11.
+      'show_username' => NULL,
       'max_name_length' => 128,
       'op' => 'Save configuration',
     ]);

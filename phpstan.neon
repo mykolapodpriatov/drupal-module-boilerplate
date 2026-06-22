@@ -19,9 +19,9 @@ parameters:
     - '#Function example_starter_theme\(\) return type has no value type specified in iterable type array#'
   reportUnmatchedIgnoredErrors: false
 
-includes:
-  - vendor/mglaman/phpstan-drupal/extension.neon
-  - vendor/mglaman/phpstan-drupal/rules.neon
-  - vendor/phpstan/phpstan-deprecation-rules/rules.neon
-  - vendor/phpstan/phpstan-phpunit/extension.neon
-  - vendor/phpstan/phpstan-phpunit/rules.neon
+# PHPStan extensions (phpstan-drupal, phpstan-phpunit,
+# phpstan-deprecation-rules) are registered automatically by
+# phpstan/extension-installer, declared in this module's require-dev. Do not
+# also `include:` their extension.neon/rules.neon here: doing so registers
+# phpstan-drupal's ServiceMap service twice and PHPStan aborts with
+# "Multiple services of type ... ServiceMap found".
