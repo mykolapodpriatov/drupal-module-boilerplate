@@ -12,6 +12,11 @@ parameters:
   ignoreErrors:
     # The Drupal::service() pattern in hook_install() is unavoidable.
     - '#Static call to method get\(\) on Drupal\\.+#'
+    # Drupal coding standards forbid @param/@return docs on hook
+    # implementations (Drupal.Commenting.HookComment), so the iterable value
+    # types PHPStan wants on hook signatures cannot be documented.
+    - '#Function example_starter_theme\(\) has parameter \$existing with no value type specified in iterable type array#'
+    - '#Function example_starter_theme\(\) return type has no value type specified in iterable type array#'
   reportUnmatchedIgnoredErrors: false
 
 includes:

@@ -39,6 +39,8 @@ final class SettingsForm extends ConfigFormBase {
    *
    * @param array<string, mixed> $form
    *   The form structure.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
    *
    * @return array<string, mixed>
    *   The built form structure.
@@ -82,6 +84,8 @@ final class SettingsForm extends ConfigFormBase {
    *
    * @param array<string, mixed> $form
    *   The form structure.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
    */
   public function validateForm(array &$form, FormStateInterface $form_state): void {
     parent::validateForm($form, $form_state);
@@ -106,6 +110,8 @@ final class SettingsForm extends ConfigFormBase {
    *
    * @param array<string, mixed> $form
    *   The form structure.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $this->config(self::SETTINGS)

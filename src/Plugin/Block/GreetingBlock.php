@@ -50,8 +50,14 @@ final class GreetingBlock extends BlockBase implements ContainerFactoryPluginInt
   /**
    * {@inheritdoc}
    *
+   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+   *   The service container.
    * @param array<string, mixed> $configuration
    *   Plugin configuration.
+   * @param string $plugin_id
+   *   The plugin ID.
+   * @param mixed $plugin_definition
+   *   The plugin definition.
    */
   public static function create(
     ContainerInterface $container,
@@ -85,6 +91,8 @@ final class GreetingBlock extends BlockBase implements ContainerFactoryPluginInt
    *
    * @param array<string, mixed> $form
    *   The block configuration form structure.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
    *
    * @return array<string, mixed>
    *   The block configuration form structure.
@@ -106,6 +114,8 @@ final class GreetingBlock extends BlockBase implements ContainerFactoryPluginInt
    *
    * @param array<string, mixed> $form
    *   The block configuration form structure.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
    */
   public function blockSubmit($form, $form_state): void {
     $this->configuration['custom_name'] = trim((string) $form_state->getValue('custom_name'));
