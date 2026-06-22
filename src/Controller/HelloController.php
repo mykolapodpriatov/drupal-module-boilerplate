@@ -19,7 +19,7 @@ final class HelloController extends ControllerBase {
    */
   public function __construct(
     private readonly GreeterInterface $greeter,
-    private readonly AccountInterface $currentUser,
+    private readonly AccountInterface $account,
   ) {}
 
   /**
@@ -39,8 +39,8 @@ final class HelloController extends ControllerBase {
    *   The renderable greeting page.
    */
   public function page(): array {
-    $userName = $this->currentUser->isAuthenticated()
-      ? $this->currentUser->getDisplayName()
+    $userName = $this->account->isAuthenticated()
+      ? $this->account->getDisplayName()
       : '';
 
     return [

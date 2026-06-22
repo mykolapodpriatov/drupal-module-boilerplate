@@ -26,6 +26,9 @@ final class SettingsForm extends ConfigFormBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @return array<int, string>
+   *   The editable configuration names.
    */
   protected function getEditableConfigNames(): array {
     return [self::SETTINGS];
@@ -33,6 +36,12 @@ final class SettingsForm extends ConfigFormBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @param array<string, mixed> $form
+   *   The form structure.
+   *
+   * @return array<string, mixed>
+   *   The built form structure.
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
     $config = $this->config(self::SETTINGS);
@@ -70,6 +79,9 @@ final class SettingsForm extends ConfigFormBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @param array<string, mixed> $form
+   *   The form structure.
    */
   public function validateForm(array &$form, FormStateInterface $form_state): void {
     parent::validateForm($form, $form_state);
@@ -91,6 +103,9 @@ final class SettingsForm extends ConfigFormBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @param array<string, mixed> $form
+   *   The form structure.
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $this->config(self::SETTINGS)
