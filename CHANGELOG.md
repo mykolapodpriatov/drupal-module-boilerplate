@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- The `Greeter` service now honours the `show_username` and `max_name_length`
+  settings (previously persisted by the settings form but ignored): the user
+  name is omitted when `show_username` is off, and names are truncated to
+  `max_name_length` characters.
+- Documentation clarified that CI runs the unit + kernel suites; functional
+  (BrowserTestBase) tests are run locally.
+
 ## [1.0.0] - 2026-05-28
 
 ### Added
@@ -17,10 +25,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `GreetingBlock` plugin using PHP 8 attribute discovery.
 - `RequestSubscriber` tracking per-route request counts via the State API.
 - `hook_update_9001()` example renaming a legacy config key.
-- Unit, Kernel, and Functional test coverage.
+- Unit, Kernel, and Functional test coverage (functional tests are run locally;
+  see CONTRIBUTING.md).
 - GitHub Actions CI matrix (PHP 8.2/8.3 × Drupal 10.3/11) running PHPCS, PHPStan
-  level 8, and PHPUnit.
+  level 8, and the unit + kernel PHPUnit suites.
 - DDEV configuration for local development.
 
-[Unreleased]: https://github.com/example/drupal-module-boilerplate/compare/1.0.0...HEAD
-[1.0.0]: https://github.com/example/drupal-module-boilerplate/releases/tag/1.0.0
+[Unreleased]: https://github.com/mykolapodpriatov/drupal-module-boilerplate/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/mykolapodpriatov/drupal-module-boilerplate/releases/tag/1.0.0

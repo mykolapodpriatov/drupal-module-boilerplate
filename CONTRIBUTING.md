@@ -20,19 +20,23 @@ site's `composer.json`.
 
 ## Running the checks
 
-Before submitting a PR, please make sure all four pass locally:
+Before submitting a PR, please make sure all of these pass locally:
 
 ```bash
 composer lint
 composer analyse
 composer test:unit
 composer test:kernel
-# Functional tests require a working Drupal install:
+# Functional (BrowserTestBase) tests require a working Drupal install plus a
+# WebDriver/Chrome for any JS coverage; run them locally before opening a PR:
 composer test:functional
 ```
 
-CI runs the same checks across PHP 8.2/8.3 and Drupal 10.3/11. PRs that turn
-CI red will not be merged.
+CI runs PHPCS, PHPStan (level 8), and the unit + kernel suites across
+PHP 8.2/8.3 and Drupal 10.3/11. Functional tests are **not** run in CI (they
+need a provisioned browser, which adds flakiness), so please run
+`composer test:functional` locally and confirm it is green. PRs that turn CI
+red will not be merged.
 
 ## Code style
 

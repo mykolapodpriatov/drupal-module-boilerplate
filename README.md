@@ -23,7 +23,7 @@ project.
 | Tests                | Unit / Kernel / Functional under `tests/src/`                    |
 | Static analysis      | PHPStan **level 8** via `phpstan.neon`                           |
 | Coding standards     | `Drupal` + `DrupalPractice` via `phpcs.xml.dist`                 |
-| CI                   | GitHub Actions matrix: PHP 8.2/8.3 × Drupal 10.3/11              |
+| CI                   | GitHub Actions matrix (PHP 8.2/8.3 × Drupal 10.3/11): PHPCS, PHPStan, unit + kernel tests |
 
 ## Requirements
 
@@ -79,7 +79,7 @@ composer test:unit
 # Kernel tests (requires bootstrapped Drupal)
 composer test:kernel
 
-# Functional tests (full BrowserTestBase)
+# Functional tests (full BrowserTestBase) — run locally; not executed in CI
 composer test:functional
 
 # Static analysis
