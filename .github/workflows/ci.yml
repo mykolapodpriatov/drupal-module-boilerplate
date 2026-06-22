@@ -67,7 +67,7 @@ jobs:
             mglaman/phpstan-drupal:^1.2 \
             phpstan/phpstan:^1.10 \
             phpstan/phpstan-deprecation-rules:^1.1
-          composer install --no-interaction --no-progress --prefer-dist
+          composer update --no-interaction --no-progress --prefer-dist
 
       - name: Run PHPCS (Drupal coding standards)
         run: |
@@ -151,7 +151,7 @@ jobs:
           composer config repositories.example_starter path ../example_starter
           composer require --no-update "mykolapodpriatov/example_starter:*"
           composer require --dev --no-update phpunit/phpunit:"^9.6 || ^10"
-          composer install --no-interaction --no-progress --prefer-dist
+          composer update --no-interaction --no-progress --prefer-dist
           mkdir -p web/sites/simpletest/browser_output
 
       - name: Wait for MariaDB
