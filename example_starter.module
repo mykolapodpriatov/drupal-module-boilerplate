@@ -28,6 +28,18 @@ function example_starter_help(string $route_name, RouteMatchInterface $route_mat
 
 /**
  * Implements hook_theme().
+ *
+ * @param array<string, mixed> $existing
+ *   The existing theme hook definitions.
+ * @param string $type
+ *   The extension type providing the theme hooks.
+ * @param string $theme
+ *   The actively rendering theme.
+ * @param string $path
+ *   The path to the extension providing the theme hooks.
+ *
+ * @return array<string, mixed>
+ *   The theme hook definitions for this module.
  */
 function example_starter_theme(array $existing, string $type, string $theme, string $path): array {
   return [

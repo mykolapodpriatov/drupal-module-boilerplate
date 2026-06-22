@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\Tests\example_starter\Functional\Controller;
 
 use Drupal\Tests\BrowserTestBase;
+use Drupal\user\UserInterface;
 
 /**
  * @coversDefaultClass \Drupal\example_starter\Controller\HelloController
@@ -36,12 +37,13 @@ final class HelloControllerTest extends BrowserTestBase {
    */
   public function testAuthorizedUserSeesGreeting(): void {
     $user = $this->drupalCreateUser(['view example starter page']);
+    $this->assertInstanceOf(UserInterface::class, $user);
     $this->drupalLogin($user);
 
     $this->drupalGet('/example-starter/hello');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertSession()->pageTextContains('Hello,');
-    $this->assertSession()->pageTextContains($user->getDisplayName());
+    $this->assertSession()->pageTextContains((string) $user->getDisplayName());
   }
 
   /**
@@ -53,6 +55,7 @@ final class HelloControllerTest extends BrowserTestBase {
       ->save();
 
     $user = $this->drupalCreateUser(['view example starter page']);
+    $this->assertInstanceOf(UserInterface::class, $user);
     $this->drupalLogin($user);
 
     $this->drupalGet('/example-starter/hello');

@@ -49,6 +49,9 @@ final class GreetingBlock extends BlockBase implements ContainerFactoryPluginInt
 
   /**
    * {@inheritdoc}
+   *
+   * @param array<string, mixed> $configuration
+   *   Plugin configuration.
    */
   public static function create(
     ContainerInterface $container,
@@ -67,6 +70,9 @@ final class GreetingBlock extends BlockBase implements ContainerFactoryPluginInt
 
   /**
    * {@inheritdoc}
+   *
+   * @return array<string, mixed>
+   *   The default block configuration.
    */
   public function defaultConfiguration(): array {
     return [
@@ -76,6 +82,12 @@ final class GreetingBlock extends BlockBase implements ContainerFactoryPluginInt
 
   /**
    * {@inheritdoc}
+   *
+   * @param array<string, mixed> $form
+   *   The block configuration form structure.
+   *
+   * @return array<string, mixed>
+   *   The block configuration form structure.
    */
   public function blockForm($form, $form_state): array {
     $form = parent::blockForm($form, $form_state);
@@ -91,6 +103,9 @@ final class GreetingBlock extends BlockBase implements ContainerFactoryPluginInt
 
   /**
    * {@inheritdoc}
+   *
+   * @param array<string, mixed> $form
+   *   The block configuration form structure.
    */
   public function blockSubmit($form, $form_state): void {
     $this->configuration['custom_name'] = trim((string) $form_state->getValue('custom_name'));
@@ -98,6 +113,9 @@ final class GreetingBlock extends BlockBase implements ContainerFactoryPluginInt
 
   /**
    * {@inheritdoc}
+   *
+   * @return array<string, mixed>
+   *   The block render array.
    */
   public function build(): array {
     $name = (string) $this->configuration['custom_name'];

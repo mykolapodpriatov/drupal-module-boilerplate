@@ -102,7 +102,7 @@ final class Greeter implements GreeterInterface {
     }
 
     if ($this->currentUser->isAuthenticated()) {
-      return $this->currentUser->getDisplayName();
+      return (string) $this->currentUser->getDisplayName();
     }
 
     return 'Guest';
