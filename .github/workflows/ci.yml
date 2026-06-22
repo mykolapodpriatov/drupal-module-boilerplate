@@ -171,9 +171,15 @@ jobs:
           BROWSERTEST_OUTPUT_DIRECTORY: "/tmp"
           SYMFONY_DEPRECATIONS_HELPER: "weak"
         run: |
-          cd drupal
-          vendor/bin/phpunit \
-            --configuration ../example_starter/phpunit.xml.dist \
-            --testsuite=unit,kernel \
+          # Run from web/core using core's own PHPUnit config so the core
+          # bootstrap and module extension discovery resolve correctly. The
+          # module is installed by the path repository into
+          # web/modules/contrib/example_starter; target its installed tests
+          # via an absolute path.
+          module_tests="$GITHUB_WORKSPACE/drupal/web/modules/contrib/example_starter/tests"
+          cd drupal/web/core
+          ../../vendor/bin/phpunit \
+            --configuration phpunit.xml.dist \
             --colors=always \
-            ../example_starter/tests
+            "$module_tests/src/Unit" \
+            "$module_tests/src/Kernel"

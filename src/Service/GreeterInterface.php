@@ -19,8 +19,9 @@ interface GreeterInterface {
    *
    * @param string $name
    *   The name to greet. An empty string falls back to the current user's
-   *   account name (when show_username is enabled), the anonymous label when the
-   *   user is not authenticated, or no name at all when show_username is off.
+   *   account name (when show_username is enabled), the anonymous label when
+   *   the user is not authenticated, or no name at all when show_username is
+   *   off.
    *
    * @return string
    *   The fully formatted greeting, e.g. "Hello, Alice!" or "Hello!" when the
