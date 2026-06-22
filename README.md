@@ -1,6 +1,6 @@
 # Example Starter — Drupal 10/11 Module Boilerplate
 
-[![CI](https://github.com/example/drupal-module-boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/example/drupal-module-boilerplate/actions/workflows/ci.yml)
+[![CI](https://github.com/mykolapodpriatov/drupal-module-boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/mykolapodpriatov/drupal-module-boilerplate/actions/workflows/ci.yml)
 [![PHPStan Level 8](https://img.shields.io/badge/PHPStan-level%208-brightgreen.svg)](phpstan.neon)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -34,16 +34,18 @@ project.
 
 ## Use as a template
 
-### Option A — Composer create-project
+### Option A — GitHub "Use this template"
 
-```bash
-composer create-project drupal/example_starter my_new_module --prefer-source
-```
+On [the repository page](https://github.com/mykolapodpriatov/drupal-module-boilerplate),
+click **Use this template → Create a new repository**. GitHub copies the files
+into a fresh repo of your own with no commit history to clean up. Then clone
+your new repo and run the rename steps from Option B (skipping the
+`git clone` / `rm -rf .git` lines).
 
 ### Option B — Clone and rename
 
 ```bash
-git clone https://github.com/example/drupal-module-boilerplate.git my_new_module
+git clone https://github.com/mykolapodpriatov/drupal-module-boilerplate.git my_new_module
 cd my_new_module
 # Replace machine name everywhere:
 grep -rl 'example_starter' . --exclude-dir=.git | xargs sed -i '' 's/example_starter/my_new_module/g'
@@ -51,8 +53,12 @@ grep -rl 'example_starter' . --exclude-dir=.git | xargs sed -i '' 's/example_sta
 grep -rl 'Example Starter' . --exclude-dir=.git | xargs sed -i '' 's/Example Starter/My New Module/g'
 # Rename file prefixes:
 for f in example_starter.*; do mv "$f" "${f/example_starter/my_new_module}"; done
+# Start fresh history for your module:
 rm -rf .git && git init
 ```
+
+> The `sed -i ''` syntax above is for macOS/BSD. On GNU/Linux use `sed -i`
+> (no empty-string argument).
 
 ## DDEV quickstart
 

@@ -1,5 +1,5 @@
 {
-    "name": "drupal/example_starter",
+    "name": "mykolapodpriatov/example_starter",
     "description": "Production-ready starter template for custom Drupal 10/11 modules. Demonstrates DI, services, config schema, plugins, events, and full test coverage.",
     "type": "drupal-module",
     "license": "MIT",
@@ -10,7 +10,17 @@
         "template",
         "starter"
     ],
-    "homepage": "https://www.drupal.org/project/example_starter",
+    "homepage": "https://github.com/mykolapodpriatov/drupal-module-boilerplate",
+    "authors": [
+        {
+            "name": "Mykola Podpriatov",
+            "role": "Maintainer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/mykolapodpriatov/drupal-module-boilerplate/issues",
+        "source": "https://github.com/mykolapodpriatov/drupal-module-boilerplate"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
