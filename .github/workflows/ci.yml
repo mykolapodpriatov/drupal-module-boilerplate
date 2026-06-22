@@ -81,6 +81,13 @@ jobs:
       - name: Run PHPStan (level 8)
         run: |
           cd drupal
+          # The module's phpstan.neon resolves its `includes:` relative to the
+          # module root (it assumes a DDEV layout where the dependencies are
+          # installed beside it). In CI the dependencies live in the scaffold's
+          # vendor dir, so expose them to the module via a vendor symlink. The
+          # config's `paths:` (module-relative) and `drupal_root: web`
+          # (CWD-relative, i.e. drupal/web) already resolve correctly.
+          ln -sfn "$(pwd)/vendor" ../example_starter/vendor
           vendor/bin/phpstan analyse \
             --configuration=../example_starter/phpstan.neon \
             --memory-limit=1G \
@@ -150,7 +157,12 @@ jobs:
           composer config prefer-stable true
           composer config repositories.example_starter path ../example_starter
           composer require --no-update "mykolapodpriatov/example_starter:*"
-          composer require --dev --no-update phpunit/phpunit:"^9.6 || ^10"
+          # drupal/core-dev provides the full testing stack (PHPUnit, Behat
+          # Mink, vfsStream, etc.) that Drupal's test bootstrap requires; a
+          # bare phpunit/phpunit install leaves Mink classes missing and the
+          # core bootstrap fails before any test runs.
+          composer require --dev --no-update \
+            "drupal/core-dev:${DRUPAL_CONSTRAINT}"
           composer update --no-interaction --no-progress --prefer-dist
           mkdir -p web/sites/simpletest/browser_output
 
