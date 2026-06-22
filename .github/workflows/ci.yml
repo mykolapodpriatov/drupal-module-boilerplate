@@ -61,6 +61,11 @@ jobs:
           composer config minimum-stability dev
           composer config prefer-stable true
           composer config repositories.example_starter path ../example_starter
+          # phpstan/extension-installer auto-registers the phpstan-drupal /
+          # phpstan-phpunit / deprecation-rules extensions, so the module's
+          # phpstan.neon must NOT include them manually (that would double-
+          # register and crash). Allow the plugin explicitly.
+          composer config --no-plugins allow-plugins.phpstan/extension-installer true
           composer require --no-update "mykolapodpriatov/example_starter:*"
           # drupal/core-dev provides the Drupal test base classes (UnitTestCase,
           # KernelTestBase, BrowserTestBase, WebAssert) and PHPUnit; together
@@ -70,6 +75,7 @@ jobs:
             "drupal/core-dev:${DRUPAL_CONSTRAINT}" \
             drupal/coder:^8.3 \
             mglaman/phpstan-drupal:^1.2 \
+            phpstan/extension-installer:^1.4 \
             phpstan/phpstan:^1.10 \
             phpstan/phpstan-deprecation-rules:^1.1 \
             phpstan/phpstan-phpunit:^1.3
