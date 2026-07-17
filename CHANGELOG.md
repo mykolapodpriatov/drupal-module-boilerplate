@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `scripts/rename-module.sh` renames the boilerplate (file contents + the
+  `example_starter.*` file names) in one step, with machine-name validation,
+  `--dry-run` support, and BSD/GNU `sed -i` detection. Replaces the manual
+  `sed` recipe in the README (kept as a collapsed fallback). Linted by a new
+  `shellcheck` CI job.
+
 ### Changed
 - The `Greeter` service now honours the `show_username` and `max_name_length`
   settings (previously persisted by the settings form but ignored): the user

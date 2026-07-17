@@ -23,7 +23,7 @@ project.
 | Tests                | Unit / Kernel / Functional under `tests/src/`                    |
 | Static analysis      | PHPStan **level 8** via `phpstan.neon`                           |
 | Coding standards     | `Drupal` + `DrupalPractice` via `phpcs.xml.dist`                 |
-| CI                   | GitHub Actions matrix (PHP 8.2/8.3 × Drupal 10.3/11): PHPCS, PHPStan, unit + kernel tests |
+| CI                   | GitHub Actions matrix (PHP 8.2/8.3 × Drupal 10.3/11): PHPCS, PHPStan, unit + kernel tests, ShellCheck |
 
 ## Requirements
 
@@ -44,21 +44,46 @@ your new repo and run the rename steps from Option B (skipping the
 
 ### Option B — Clone and rename
 
+Use the bundled script to rename the module (file contents **and** the
+`example_starter.*` file names) in one step. It validates the machine name,
+refuses to run until you change it from `example_starter`, and detects the
+local `sed -i` flavour (macOS/BSD vs GNU/Linux) for you.
+
 ```bash
 git clone https://github.com/mykolapodpriatov/drupal-module-boilerplate.git my_new_module
 cd my_new_module
+# Preview every change first (writes nothing):
+bash scripts/rename-module.sh \
+  --machine-name=my_new_module \
+  --human-name="My New Module" \
+  --dry-run
+# Apply the rename:
+bash scripts/rename-module.sh \
+  --machine-name=my_new_module \
+  --human-name="My New Module"
+# Start fresh history for your module:
+rm -rf .git && git init
+```
+
+The machine name must match `^[a-z][a-z0-9_]*$` (lower-case, starts with a
+letter, words joined by underscores).
+
+<details>
+<summary>Prefer to run the raw commands by hand?</summary>
+
+```bash
 # Replace machine name everywhere:
 grep -rl 'example_starter' . --exclude-dir=.git | xargs sed -i '' 's/example_starter/my_new_module/g'
 # Replace human-readable name in info.yml, README, etc:
 grep -rl 'Example Starter' . --exclude-dir=.git | xargs sed -i '' 's/Example Starter/My New Module/g'
 # Rename file prefixes:
 for f in example_starter.*; do mv "$f" "${f/example_starter/my_new_module}"; done
-# Start fresh history for your module:
-rm -rf .git && git init
 ```
 
 > The `sed -i ''` syntax above is for macOS/BSD. On GNU/Linux use `sed -i`
 > (no empty-string argument).
+
+</details>
 
 ## DDEV quickstart
 
