@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `--dry-run` support, and BSD/GNU `sed -i` detection. Replaces the manual
   `sed` recipe in the README (kept as a collapsed fallback). Linted by a new
   `shellcheck` CI job.
+- `GreetingBlock` now declares an explicit `getCacheMaxAge()` (permanent),
+  alongside `getCacheContexts()`/`getCacheTags()`, and a unit test covering the
+  block's cache metadata and its container (`create()`) wiring.
 
 ### Changed
 - The `Greeter` service now honours the `show_username` and `max_name_length`
