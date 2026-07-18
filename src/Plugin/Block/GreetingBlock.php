@@ -7,6 +7,7 @@ namespace Drupal\example_starter\Plugin\Block;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
@@ -159,6 +160,19 @@ final class GreetingBlock extends BlockBase implements ContainerFactoryPluginInt
    */
   public function getCacheTags(): array {
     return array_merge(parent::getCacheTags(), ['config:example_starter.settings']);
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * Declared explicitly: a block that omits its cache metadata is easy to get
+   * wrong, and forgetting to make output cacheable defaults it to an
+   * uncacheable max-age of 0. This block is safe to cache permanently because
+   * its cache contexts (user) and tags (the module settings config) already
+   * capture everything that can change the rendered greeting.
+   */
+  public function getCacheMaxAge(): int {
+    return Cache::PERMANENT;
   }
 
 }
