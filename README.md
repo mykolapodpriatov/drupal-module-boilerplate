@@ -17,6 +17,7 @@ project.
 | Routing & access     | `example_starter.routing.yml` + `src/Controller/HelloController` |
 | Config + schema      | `config/install/*.yml`, `config/schema/*.yml`, `SettingsForm`    |
 | Plugins (PHP attr.)  | `src/Plugin/Block/GreetingBlock.php`                             |
+| Plugins (QueueWorker)| `src/Plugin/QueueWorker/ExampleStarterCleanupWorker.php`         |
 | Event subscribers    | `src/EventSubscriber/RequestSubscriber.php`                      |
 | Update hooks         | `example_starter.install` (`hook_update_9001`)                   |
 | Twig + libraries     | `templates/` + `example_starter.libraries.yml`                   |
