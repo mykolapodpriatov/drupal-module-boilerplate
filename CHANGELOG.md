@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `hook_cron()` (`example_starter_cron()`) enqueues tracked route names
+  from the request-counter State map so `ExampleStarterCleanupWorker`
+  has a producer to pair with the existing consumer.
 - `scripts/rename-module.sh` renames the boilerplate (file contents + the
   `example_starter.*` file names) in one step, with machine-name validation,
   `--dry-run` support, and BSD/GNU `sed -i` detection. Replaces the manual

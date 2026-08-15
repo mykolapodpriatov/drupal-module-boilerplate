@@ -8,6 +8,7 @@
 declare(strict_types=1);
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\example_starter\EventSubscriber\RequestSubscriber;
 
 /**
  * Implements hook_help().
@@ -39,4 +40,25 @@ function example_starter_theme(array $existing, string $type, string $theme, str
       'template' => 'example-starter-greeting',
     ],
   ];
+}
+
+/**
+ * Implements hook_cron().
+ *
+ * Enqueues each tracked route so ExampleStarterCleanupWorker can drop
+ * that route's request counter. Core cron then drains the queue because
+ * the worker declares cron: ['time' => 30].
+ */
+function example_starter_cron(): void {
+  $counters = \Drupal::state()->get(RequestSubscriber::STATE_KEY, []);
+  if (!is_array($counters) || $counters === []) {
+    return;
+  }
+
+  $queue = \Drupal::queue('example_starter_cleanup');
+  foreach (array_keys($counters) as $route_name) {
+    if (is_string($route_name) && $route_name !== '') {
+      $queue->createItem($route_name);
+    }
+  }
 }
